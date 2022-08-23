@@ -1,4 +1,4 @@
-package com.spring.ploymorphism;
+package com.spring.setterinject;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
