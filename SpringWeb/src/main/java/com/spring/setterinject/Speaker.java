@@ -2,7 +2,7 @@ package com.spring.setterinject;
 
 public interface Speaker {
 	
-	void volumeUp();
+	void volumeUp();   //볼륨 키우기
 	
-	void volumeDown();
+	void volumeDown(); //볼륨 줄임
 }

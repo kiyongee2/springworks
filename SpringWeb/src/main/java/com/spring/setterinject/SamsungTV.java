@@ -31,12 +31,12 @@ public class SamsungTV implements TV{
 
 	@Override
 	public void volumeUp() {
-		speaker.volumeUp();
+		speaker.volumeUp();  //스피커의 볼륨 키우기
 	}
 
 	@Override
 	public void volumeDown() {
-		speaker.volumeDown();
+		speaker.volumeDown();  //스피커의 볼륨 키우기
 	}
 
 }
