@@ -22,9 +22,9 @@ public class BoardServiceClient {
 		
 		//글쓰기
 		BoardVO vo = new BoardVO();
-		vo.setTitle("안녕하세요");
-		vo.setWriter("장그래");
-		vo.setContent("지인 추천으로 가입했어요...");
+		vo.setTitle("가을6");
+		vo.setWriter("오상식");
+		vo.setContent("가을이 오고 있어요");
 		//boardDAO.insertBoard(vo);
 		boardService.insertBoard(vo);
 	
@@ -38,5 +38,4 @@ public class BoardServiceClient {
 		//3. spring 컨테이너 종료
 		container.close();
 	}
-
 }
