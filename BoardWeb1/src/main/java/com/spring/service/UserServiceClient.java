@@ -18,8 +18,8 @@ public class UserServiceClient {
 		UserService userService = (UserService) container.getBean("userService");
 		
 		UserVO vo = new UserVO();
-		vo.setId("test");
-		vo.setPasswd("test123");
+		vo.setId("user1");
+		vo.setPasswd("user123");
 		
 		//boolean result = userDAO.login(vo);
 		boolean result = userService.login(vo);
