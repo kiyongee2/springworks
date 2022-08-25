@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/* 공통 스타일  */
+*{margin: 0; padding: 0;}
+hr{margin: 20px;}
+h4{margin: 10px;}
+#container{width: 1000px; margin: 30px auto; text-align: center;}
+
+/* boardList 스타일 */
+.tbl_list{margin: 20px auto; width: 620px;}
+.tbl_list, th, td{border: 1px solid #ccc; border-collapse: collapse;
+   padding: 10px;}
+.btn_box{width: 620px; margin: 0 auto; text-align: left}
+#list button{padding: 10px 20px;}
+
+/* insertBoard 스타일 */
+.tbl_reg{margin: 20px auto; width: 580px;}
+.tbl_reg, td{border: 1px solid #ccc; border-collapse: collapse;
+   padding: 10px;}
+.tbl_reg input{width: 460px; height: 30px; border: 1px solid #aaa; 
+     border-radius:2px;}
+.tbl_reg textarea{width: 460px; border: 1px solid #aaa; border-radius:2px;}
+.tbl_reg td:nth-child(1){width: 100px}
+.tbl_reg input[type="submit"], input[type="button"]{width: 60px; height: 30px;}
+
