@@ -24,6 +24,16 @@ public class BoardServiceImpl implements BoardService{
 		return dao.getBoardList();
 	}
 
+	@Override
+	public BoardVO getBoard(int bno) { //글 상세 보기
+		return dao.getBoard(bno);
+	}
+
+	@Override
+	public void deleteBoard(BoardVO vo) {
+		dao.deleteBoard(vo);
+	}
+
 	
 
 }

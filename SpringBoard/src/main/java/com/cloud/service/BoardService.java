@@ -10,5 +10,9 @@ public interface BoardService {
 	
 	public List<BoardVO> getBoardList(); //목록 보기
 	
+	public BoardVO getBoard(int bno);  //글 상세보기
+	
+	public void deleteBoard(BoardVO vo); //글 삭제
+	
 	
 }
