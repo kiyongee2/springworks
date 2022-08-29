@@ -14,5 +14,9 @@ public interface BoardService {
 	
 	public void deleteBoard(BoardVO vo); //글 삭제
 	
+	public void updateBoard(BoardVO vo); //글 수정
+	
+	public void updateCount(int bno);  //조회수 증가
+	
 	
 }

@@ -30,10 +30,17 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void deleteBoard(BoardVO vo) {
+	public void deleteBoard(BoardVO vo) { //글 삭제
 		dao.deleteBoard(vo);
 	}
 
-	
+	@Override
+	public void updateBoard(BoardVO vo) { //글 수정
+		dao.updateBoard(vo); 
+	}
 
+	@Override
+	public void updateCount(int bno) {  //조회수 증가
+		dao.updateCount(bno);
+	}
 }

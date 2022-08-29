@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -34,8 +35,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/insertBoard", method=RequestMethod.POST)
-	public String insertBoard(BoardVO vo) {  //글쓰기 처리 요청
+	public String insertBoard(BoardVO vo, HttpServletRequest request) throws UnsupportedEncodingException {  //글쓰기 처리 요청
 		//파라미터의 객체를 커맨드 객체라고 함. (폼 데이터를 전달받고 세팅)
+		//request.setCharacterEncoding("utf-8");  //web.xml의 Filter로 처리함
 		service.insertBoard(vo);
 		return "redirect:boardList";
 	}
@@ -61,7 +63,9 @@ public class BoardController {
 	
 	@GetMapping("/boardView")
 	public String getBoard(int bno, Model model) { //상세보기 페이지 요청
-		BoardVO board = service.getBoard(bno);
+		service.updateCount(bno);  //조회수 증가
+		BoardVO board = service.getBoard(bno); //상세 페이지 처리
+		
 		model.addAttribute("board", board);  //jsp로 board 데이터 보냄
 		return "boardView";
 	}
@@ -69,6 +73,12 @@ public class BoardController {
 	@GetMapping("/deleteBoard")
 	public String deleteBoard(BoardVO vo) { //글삭제 처리 요청
 		service.deleteBoard(vo);
+		return "redirect:boardList";
+	}
+	
+	@PostMapping("/updateBoard")
+	public String updateBoard(BoardVO vo) { //글 수정 요청
+		service.updateBoard(vo);
 		return "redirect:boardList";
 	}
 }

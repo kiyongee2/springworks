@@ -29,6 +29,8 @@ public class BoardDAO {
 			"SELECT * FROM board WHERE bno = ?";
 	private final String BOARD_DELETE =
 			"DELETE FROM board WHERE bno = ?";
+	private final String BOARD_UPDATE =
+			"UPDATE board SET title=?, content=? WHERE bno = ?";
 	
 	//글 쓰기
 	public void insertBoard(BoardVO vo) {
@@ -46,10 +48,9 @@ public class BoardDAO {
 		}
 	}
 	
-	
 	//글 목록 보기
 	public List<BoardVO> getBoardList(){
-		List<BoardVO> boardList = new ArrayList<BoardVO>();
+		List<BoardVO> boardList = new ArrayList<>();
 		try {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(BOARD_LIST);
@@ -96,12 +97,54 @@ public class BoardDAO {
 		return board;
 	}
 	
+	//조회수
+	public void updateCount(int bno) {
+		try {
+			conn = JDBCUtil.getConnection();
+			//조회수 검색
+			/*String sql = "SELECT cnt FROM board WHERE bno = ?";
+			pstmt = conn.prepareStatement(sql);  
+			pstmt.setInt(1, bno);
+			rs = pstmt.executeQuery();
+			int cnt = 0;
+			if(rs.next()) {
+				cnt = rs.getInt("cnt") + 1;  //1 증가
+			}*/
+			
+			//조회수 증가
+			String sql = "UPDATE board SET cnt = cnt+1 WHERE bno = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, bno);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt, rs);
+		}
+	}
+	
 	//글 삭제
 	public void deleteBoard(BoardVO vo) {
 		try {
 			conn = JDBCUtil.getConnection();
 			pstmt = conn.prepareStatement(BOARD_DELETE);
 			pstmt.setInt(1, vo.getBno());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(conn, pstmt);
+		}
+	}
+	
+	//글 수정
+	public void updateBoard(BoardVO vo) {
+		try {
+			conn = JDBCUtil.getConnection();
+			pstmt = conn.prepareStatement(BOARD_UPDATE);
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getContent());
+			pstmt.setInt(3, vo.getBno());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
