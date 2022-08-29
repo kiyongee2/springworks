@@ -24,7 +24,7 @@
 				<c:forEach items="${boardList}" var="board">
 				<tr>
 					<td><c:out value="${board.bno}" /></td>
-					<td><a href="/boardView?bno=<c:out value="${board.bno}" />"><c:out value="${board.title}" /></a></td>
+					<td><a href="/board/boardView?bno=<c:out value="${board.bno}" />"><c:out value="${board.title}" /></a></td>
 					<td><c:out value="${board.writer}" /></td>
 					<td><fmt:formatDate value="${board.regDate}" 
 					        pattern="yyyy-MM-dd hh:mm:ss" /></td>
@@ -33,7 +33,7 @@
 				</c:forEach>
 			</table>
 			<div class="btn_box">
-				<a href="/insertBoard"><button type="button">글쓰기</button></a>
+				<a href="/board/insertBoard"><button type="button">글쓰기</button></a>
 			</div>
 		</section>
 	</div>
