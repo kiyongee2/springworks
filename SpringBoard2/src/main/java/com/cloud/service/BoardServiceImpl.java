@@ -20,13 +20,18 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void insertBoard(BoardVO vo) { //글쓰기
+	public void insert(BoardVO vo) { //글쓰기
 		mapper.insertBoard(vo);
 	}
 
 	@Override
 	public BoardVO getBoard(int bno) {  //글 상세 보기
 		return mapper.getBoard(bno);
+	}
+
+	@Override
+	public void delete(BoardVO vo) {
+		mapper.deleteBoard(vo);
 	}
 
 }

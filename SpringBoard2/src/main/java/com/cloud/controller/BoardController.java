@@ -29,14 +29,14 @@ public class BoardController {
 	
 	//글쓰기 폼 페이지 요청
 	@GetMapping("/insertBoard")
-	public String insertBoard() {
+	public String insert() {
 		return "/board/insertBoard";
 	}
 	
 	//글쓰기 처리 요청
 	@PostMapping("/insertBoard")
-	public String insertBoard(BoardVO vo) {
-		service.insertBoard(vo);      
+	public String insert(BoardVO vo) {
+		service.insert(vo);      
 		return "redirect:/board/boardList";
 	}
 	
@@ -46,6 +46,13 @@ public class BoardController {
 		BoardVO board = service.getBoard(bno);
 		model.addAttribute("board", board);  //model="board" 보내기
 		return "/board/boardView";
+	}
+	
+	//글 삭제
+	@GetMapping("/deleteBoard")
+	public String delete(BoardVO vo) {
+		service.delete(vo);
+		return "redirect:/board/boardList";
 	}
 	
 }

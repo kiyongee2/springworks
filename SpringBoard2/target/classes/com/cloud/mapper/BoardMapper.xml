@@ -17,4 +17,8 @@
 	<select id="getBoard" resultType="com.cloud.domain.BoardVO">
 		SELECT * FROM tbl_board WHERE bno = #{bno}
 	</select>
+	
+	<delete id="deleteBoard">
+		DELETE FROM tbl_board WHERE bno = #{bno}
+	</delete>
 </mapper>

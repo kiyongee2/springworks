@@ -13,7 +13,7 @@
 	<div id="container">
 		<section id="list">
 			<h2>글 상세 보기</h2>
-			<form action="/updateBoard" method="post">
+			<form action="/board/updateBoard" method="post">
 			<!-- 수정 시에 기본키 속성이 반드시 필요함  --> 
 			<input type="hidden" name="bno" value="${board.bno}">
 				<table class="tbl_view">
@@ -44,7 +44,7 @@
 					<tr>
 						<td colspan="2">
 							<input type="submit" value="수정">
-							<a href="/deleteBoard?bno=<c:out value="${board.bno}" />"
+							<a href="/board/deleteBoard?bno=<c:out value="${board.bno}" />"
 							   onclick="return confirm('해당 게시글을 삭제하시겠습니까?')">
 								 <input type="button" value="삭제">
 							</a>
