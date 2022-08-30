@@ -7,6 +7,9 @@
 <title>인증</title>
 </head>
 <body>
-	<h1>/sample/all page</h1>
+	<h1>/sample/admin page</h1>
+	<a href="/customLogout">
+		<button type="button">로그아웃</button>
+	</a>
 </body>
 </html>

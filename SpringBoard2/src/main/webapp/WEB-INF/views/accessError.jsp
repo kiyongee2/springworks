@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>인증</title>
+<title>에러 처리</title>
 </head>
 <body>
-	<h1>/sample/all page</h1>
+	<h1>Access Denied Page</h1>
+	
+	<h2><c:out value="${msg}" /></h2>
 </body>
 </html>
