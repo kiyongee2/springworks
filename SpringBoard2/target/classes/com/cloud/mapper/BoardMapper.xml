@@ -31,7 +31,7 @@
 	</update>
 	
 	<!-- 조회수 -->
-	<update id="updateCount" parameterType="int">
+	<update id="updateCount">
 		UPDATE tbl_board
 		SET cnt = cnt + 1
 		WHERE bno = #{bno}
