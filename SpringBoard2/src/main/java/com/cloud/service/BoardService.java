@@ -13,4 +13,8 @@ public interface BoardService {
 	public BoardVO getBoard(int bno);  //글 상세 보기
 	
 	public void delete(BoardVO vo);  //글 삭제
+	
+	public void update(BoardVO vo);  //글 삭제
+	
+	public void updateCount(int bno);  //조회수
 }

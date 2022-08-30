@@ -43,7 +43,8 @@ public class BoardController {
 	//글 상세보기 처리
 	@GetMapping("/boardView")
 	public String getBoard(int bno, Model model) {
-		BoardVO board = service.getBoard(bno);
+		service.updateCount(bno);   //조회수 증가
+		BoardVO board = service.getBoard(bno); //상세 보기 처리
 		model.addAttribute("board", board);  //model="board" 보내기
 		return "/board/boardView";
 	}
@@ -52,6 +53,13 @@ public class BoardController {
 	@GetMapping("/deleteBoard")
 	public String delete(BoardVO vo) {
 		service.delete(vo);
+		return "redirect:/board/boardList";
+	}
+	
+	//글 수정
+	@PostMapping("/updateBoard")
+	public String update(BoardVO vo) {
+		service.update(vo);
 		return "redirect:/board/boardList";
 	}
 	
