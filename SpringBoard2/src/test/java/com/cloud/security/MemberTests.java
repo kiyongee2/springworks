@@ -26,23 +26,23 @@ public class MemberTests {
 	@Autowired
 	private PasswordEncoder pwencoder;
 	
-	//회원 100명 가입
+	//회원 10명 가입
 	/*@Test
 	public void testInsertMember() {
 		String sql = "INSERT INTO tbl_member(userid, userpw, username) "
 				+ "VALUES (?, ?, ?)";
 		
-		for(int i=0; i<100; i++) {
+		for(int i=0; i<10; i++) {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			try {
 				conn = ds.getConnection();
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(2, pwencoder.encode("pw" + i));
-				if(i < 80) { //0~79
+				if(i < 5) { //0~79
 					pstmt.setString(1, "user" + i);
 					pstmt.setString(3, "일반사용자" + i);
-				}else if(i < 90) { //80~89
+				}else if(i < 7) { //80~89
 					pstmt.setString(1, "member" + i);
 					pstmt.setString(3, "회원" + i);
 				}else { //90~100
@@ -77,17 +77,17 @@ public class MemberTests {
 		String sql = "INSERT INTO tbl_member_auth (userid, auth) "
 				+ "VALUES (?, ?)";
 		
-		for(int i=0; i<100; i++) {
+		for(int i=0; i<10; i++) {
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			try {
 				conn = ds.getConnection();
 				pstmt = conn.prepareStatement(sql);
 				
-				if(i < 80) { //0~79
+				if(i < 5) { //0~79
 					pstmt.setString(1, "user" + i);
 					pstmt.setString(2, "ROLE_USER");
-				}else if(i < 90) { //80~89
+				}else if(i < 7) { //80~89
 					pstmt.setString(1, "member" + i);
 					pstmt.setString(2, "ROLE_MEMBER");
 				}else { //90~100

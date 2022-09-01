@@ -22,7 +22,6 @@ public class CustomUserDetailsService implements UserDetailsService{
 		log.warn("Load User By Username : " + username);
 		
 		MemberVO vo = mapper.read(username); //회원 상세 보기
-		
 		log.warn("queried by member mapper : " + vo);
 		
 		//검색된 vo가 있는 CustomUser 객체 생성후 반환

@@ -1,8 +1,12 @@
 package com.cloud.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +32,7 @@ public class BoardController {
 	}
 	
 	//글쓰기 폼 페이지 요청
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/insertBoard")
 	public String insert() {
 		return "/board/insertBoard";
@@ -35,7 +40,8 @@ public class BoardController {
 	
 	//글쓰기 처리 요청
 	@PostMapping("/insertBoard")
-	public String insert(BoardVO vo) {
+	@PreAuthorize("isAuthenticated()")
+	public String insert(BoardVO vo){
 		service.insert(vo);      
 		return "redirect:/board/boardList";
 	}
