@@ -58,12 +58,13 @@ footer{margin-left: 20%; margin-top: 10%}
 #login .error{color: #f00; margin-top: 10px;}
 
 /* signup 스타일 */
-.tbl_signup{margin: 20px auto; width: 360px;}
+.tbl_signup{margin: 20px auto; width: 400px;}
 .tbl_signup, td{border: 1px solid #ccc; border-collapse: collapse;
    padding: 10px;}
 .tbl_signup input{width: 200px; height: 30px; border: 1px solid #aaa; 
    border-radius:2px;}
-.tbl_signup input[type="submit"], input[type="reset"]{width: 60px; height: 30px;}
+.tbl_signup input[type="submit"], input[type="button"],
+       input[type="reset"]{width: 60px; height: 30px;}
 .tbl_signup td:nth-child(1){width: 120px}
 
 
