@@ -17,11 +17,11 @@
 				<h2><spring:message code="message.user.login.title" /></h2>
 			</div>
 			<p class="lang">
-				<a href="customLogin?lang=en">
-					<spring:message code="message.user.login.language.en" />
-				</a>
 				<a href="customLogin?lang=ko">
-					<spring:message code="message.user.login.language.ko" />
+					<spring:message code="message.user.login.language.ko" /> |
+				</a>
+				<a href="customLogin?lang=en">
+					<spring:message code="message.user.login.language.en" /> 
 				</a>
 			</p>
 			<h3 class="error"><c:out value="${error}" /></h3>
