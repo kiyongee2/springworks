@@ -34,6 +34,12 @@
 		VALUES (#{userid}, #{userpw}, #{username}, '1')
 	</insert>
 	
+	<!-- ID 중복 체크 -->
+	<select id="checkID" resultType="int">
+		SELECT count(*) FROM tbl_member 
+		WHERE userid = #{userid}
+	</select>
+	
 	<!-- 회원 목록 -->
 	<select id="getMemberList" resultMap="memberMap">
 		<!-- SELECT * FROM tbl_member ORDER BY regdate DESC -->

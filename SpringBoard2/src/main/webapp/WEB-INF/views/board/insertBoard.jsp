@@ -28,11 +28,16 @@
 </script>
 </head>
 <body>
+	<jsp:include page="../menu.jsp" />
 	<div id="container">
 		<section id="list">
-			<h2>글쓰기</h2>
-			<form action="/board/insertBoard" method="post" 
+			<div class="title">
+				<h2>글쓰기</h2>
+			</div>
+			<form action="/board/insertBoard?${_csrf.parameterName}=${_csrf.token}" method="post" 
+				  encType="multipart/form-data"
 				  onsubmit="return checkForm()" name="newWrite">
+			  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<table class="tbl_reg">
 					<tr>
 						<td>제목</td>
@@ -51,13 +56,16 @@
 						</td>
 					</tr>
 					<tr>
+						<td>업로드</td>
+						<td><input type="file" name="uploadFile"></td> 
+					</tr>
+					<tr>
 						<td colspan="2">
 							<input type="submit" value="등록">
 							<a href="/board/boardList"><input type="button" value="목록"></a>
 						</td>
 					</tr>
 				</table>
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</form>
 		</section>
 	</div>

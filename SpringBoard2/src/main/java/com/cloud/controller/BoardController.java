@@ -1,5 +1,7 @@
 package com.cloud.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cloud.domain.BoardVO;
 import com.cloud.service.BoardService;
@@ -40,8 +43,15 @@ public class BoardController {
 	
 	//글쓰기 처리 요청
 	@PostMapping("/insertBoard")
-	@PreAuthorize("isAuthenticated()")
-	public String insert(BoardVO vo){
+	public String insert(BoardVO vo) throws IllegalStateException, IOException{
+		//파일 업로드 처리
+		MultipartFile uploadFile = vo.getUploadFile();
+		if(!uploadFile.isEmpty()) {  //파일이 첨부되었다면
+			String fileName = uploadFile.getOriginalFilename(); //파일 이름
+			String filePath = "C:/upload/";  //파일의 실제 위치
+			uploadFile.transferTo(new File(filePath + fileName));
+		}
+		
 		service.insert(vo);      
 		return "redirect:/board/boardList";
 	}

@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/resources/css/style.css">
 </head>
 <body>
+	<jsp:include page="../menu.jsp" />
 	<div id="container">
 		<section id="list">
 			<div class="title">
