@@ -1,6 +1,8 @@
 package com.cloud.mapper;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,7 +46,7 @@ public class BoardMapperTests {
 	    .forEach(board -> log.info(board)); //전체 데이터 출력
 	}*/
 	
-	@Test
+	/*@Test
 	public void testPageDTO() {
 		Criteria cri = new Criteria();
 		//cri.setPageNum(1);  //startPage - 1 페이지
@@ -52,5 +54,30 @@ public class BoardMapperTests {
 		
 		PageDTO page = new PageDTO(cri, 152);
 		log.info(page);
+	}*/
+	
+	@Test
+	public void testSearch() {
+		Map<String, String> map = new HashMap<>();
+		map.put("T", "사과");   //제목, TITLE
+		map.put("C", "Java");  //내용, CONTENT
+		
+		//중첩 Map
+		Map<String, Map<String, String>> outer = new HashMap<>();
+		outer.put("map", map);  //xml쪽의 collection="map"
+		
+		List<BoardVO> list = mapper.searchTest(outer);
+		
+		log.info(list);
 	}
 }
+
+
+
+
+
+
+
+
+
+

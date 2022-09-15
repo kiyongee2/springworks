@@ -84,8 +84,11 @@ public class BoardController {
 	
 	//글 삭제
 	@GetMapping("/deleteBoard")
-	public String delete(BoardVO vo) {
-		service.delete(vo);
+	public String delete(BoardVO vo, Criteria cri,
+			RedirectAttributes rttr) { //redirect 경로로 전달할 경우
+		service.delete(vo);            //RedirectAttributes 사용
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
 		return "redirect:/board/boardList";
 	}
 	

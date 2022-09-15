@@ -19,6 +19,19 @@
 			<div class="title">
 				<h2>글 목록</h2>
 			</div>
+			<!-- 검색 폼 -->
+			<form action="" method="get" id="searchForm">
+				<select name="type">
+					<option value="T">제목</option>
+					<option value="C">내용</option>
+					<option value="W">작성자</option>
+					<option value="TC">제목 OR 내용</option>
+					<option value="TW">제목 OR 내용</option>
+					<option value="TWC">제목 OR 내용 OR 작성자</option>
+				</select>
+				<input type="text" name="keyword" class="keyword">
+				<button type="button">Search</button>
+			</form>
 			<table class="tbl_list">
 				<tr>
 					<th>번호</th><th>제목</th><th>작성자</th><th>등록일</th><th>조회수</th>
@@ -39,13 +52,34 @@
 			<!-- pagination(페이징) -->
 			<div>
 				<ul>
+				<!-- 이전(Previous) 메뉴 -->
+				<c:if test="${pageMaker.prev}">
+					<li>
+						<a href="${pageMaker.startPage - 1 }">이전</a>
+					</li>
+				</c:if>
 				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" 
 				           var="num">
-				    <!-- 현재 페이지 -->
+				    <!-- 현재 페이지 활성화 -->
+				    <c:if test="${pageMaker.cri.pageNum eq num}">
+					<li class="page-link">
+						<b><a href="${num}" style="color: blue">
+							<c:out value="${num}" /></a>
+						</b>
+					</li>
+					</c:if>
+				    <c:if test="${pageMaker.cri.pageNum ne num}">
 					<li class="page-link">
 						<a href="${num}"><c:out value="${num}" /></a>
 					</li>
+					</c:if>
 				</c:forEach>
+				<!-- 다음(Next) 메뉴 -->
+				<c:if test="${pageMaker.next}">
+					<li>
+						<a href="${pageMaker.endPage + 1 }">이전</a>
+					</li>
+				</c:if>
 				</ul>
 			</div>
 			<!-- 페이지 처리 전송 폼 -->
