@@ -21,8 +21,8 @@
 	<!-- 기본 서비스 -->
 	<security:http>
 		<!-- <security:intercept-url pattern="/board/boardList" access="permitAll" /> -->
-		<!-- <security:intercept-url pattern="/board/boardList" 
-				access="hasRole('ROLE_USER')" /> -->
+		<security:intercept-url pattern="/board/insertBoard" 
+				access="isAuthenticated()" />
 		<security:intercept-url pattern="/member/memberList" 
 				access="hasRole('ROLE_ADMIN')" />
 		

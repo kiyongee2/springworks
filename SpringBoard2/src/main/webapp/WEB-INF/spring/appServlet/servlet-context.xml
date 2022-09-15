@@ -27,6 +27,7 @@
 		pre-post-annotations="enabled" secured-annotations="enabled"
 	/>
 
+	<!-- 빈(Bean) 객체 스캔(관리) -->
 	<context:component-scan base-package="com.cloud" />
 	
 </beans:beans>
