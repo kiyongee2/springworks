@@ -24,6 +24,8 @@
 			<!-- 수정, 삭제시에 페이지 번호 유지(안하면 무조건 1페이지로 이동) -->
 			<input type="hidden" name="pageNum" value="${cri.pageNum}">
 			<input type="hidden" name="amount" value="${cri.amount}">
+			<input type="hidden" name="type" value="${cri.type}">
+			<input type="hidden" name="keyword" value="${cri.keyword}">
 			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				<table class="tbl_view">
 					<tr>
@@ -74,6 +76,8 @@
 			<input type="hidden" name="bno" value="${board.bno}">
 			<input type="hidden" name="pageNum" value="${cri.pageNum}">
 			<input type="hidden" name="amount" value="${cri.amount}">
+			<input type="hidden" name="type" value="${pageMaker.cri.type}">
+			<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 		</form>
 	</div>
 <script type="text/javascript">

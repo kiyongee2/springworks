@@ -4,6 +4,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.cloud.mapper.BoardMapper">
+	<!-- 검색 모듈 -->
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND" >
+		    <foreach collection="typeArr" item="type" separator="OR">
+		    	<if test="type=='T'.toString()">
+		    		title LIKE '%'||#{keyword}||'%'
+		    	</if>
+		    	<if test="type=='C'.toString()">
+		    		content LIKE '%'||#{keyword}||'%'
+		    	</if>
+		    	<if test="type=='W'.toString()">
+		    		writer LIKE '%'||#{keyword}||'%'
+		    	</if>
+		    </foreach>
+	    </trim>
+	</sql>
+
 	<!-- id는 메소드, resultType - 반환값 -->
 	<select id="getBoardList" resultType="com.cloud.domain.BoardVO">
 		SELECT * FROM tbl_board ORDER BY bno DESC
@@ -17,7 +34,12 @@
 		    SELECT /*+ INDEX_DESC(tbl_board pk_board) */
 		    ROWNUM rn, bno, title, writer, content, regdate, updatedate, cnt 
 		    FROM tbl_board
-		    WHERE ROWNUM <= (#{pageNum} * #{amount})
+		    WHERE 
+		 ]]>  
+		    <!-- 검색 SQL -->
+		    <include refid="criteria" />
+		<![CDATA[    
+		    ROWNUM <= (#{pageNum} * #{amount})
 		)
 		WHERE rn > (#{pageNum}-1) * 10
 		]]>
@@ -25,7 +47,14 @@
 	
 	<!-- 총 게시글 수 -->
 	<select id="getTotalCount" resultType="int">
+		<![CDATA[
 		SELECT COUNT(*) FROM tbl_board
+		WHERE
+		]]>
+		<include refid="criteria" />
+		<![CDATA[
+			bno > 0
+		]]>
 	</select>
 	
 	<!-- 게시글 검색(테스트용) -->
@@ -44,10 +73,13 @@
 				<if test="key == 'C'.toString()">
 					content like #{val}
 				</if>
+				<if test="key == 'W'.toString()">
+					writer like #{val}
+				</if>
 			</foreach>
 			</trim>
 		<![CDATA[
-				ROWNUM < 10 
+			ROWNUM < 50 
 		]]>
 	</select>
 	

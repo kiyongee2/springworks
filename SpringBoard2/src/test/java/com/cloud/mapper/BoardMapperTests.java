@@ -56,11 +56,12 @@ public class BoardMapperTests {
 		log.info(page);
 	}*/
 	
-	@Test
+	/*@Test
 	public void testSearch() {
 		Map<String, String> map = new HashMap<>();
 		map.put("T", "사과");   //제목, TITLE
 		map.put("C", "Java");  //내용, CONTENT
+		map.put("W", "user00"); //작성자, WRITER
 		
 		//중첩 Map
 		Map<String, Map<String, String>> outer = new HashMap<>();
@@ -69,6 +70,18 @@ public class BoardMapperTests {
 		List<BoardVO> list = mapper.searchTest(outer);
 		
 		log.info(list);
+	}*/
+	
+	@Test
+	public void testSearchPaging() {
+		//검색 종류와 키워드 입력
+		Criteria cri = new Criteria();
+		cri.setType("T");
+		cri.setKeyword("빨강");
+		
+		List<BoardVO> list = mapper.getListWithPage(cri);
+		
+		list.forEach(board -> log.info(board));
 	}
 }
 
