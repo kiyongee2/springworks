@@ -8,4 +8,9 @@
 	<select id="getReplyList" resultType="com.cloud.domain.ReplyVO">
 		SELECT * FROM tbl_reply WHERE bno = #{bno}
 	</select>
+	
+	<insert id="register">
+		INSERT INTO tbl_reply(rno, bno, reply, replyer)
+		VALUES (seq_reply.nextval, #{bno}, #{reply}, #{replyer})
+	</insert>
 </mapper>

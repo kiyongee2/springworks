@@ -21,4 +21,9 @@ public class ReplyServiceImpl implements ReplyService{
 		return replyMapper.getReplyList(bno);
 	}
 
+	@Override
+	public void register(ReplyVO vo) {
+		replyMapper.register(vo);
+	}
+
 }

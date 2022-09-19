@@ -82,12 +82,14 @@
 							   (작성일: <fmt:formatDate value="${list.replyDate}" 
 							   				pattern="yyyy-MM-dd hh:mm:ss" /> )
 							</p>
-							<p><c:out value="${list.reply}"/> </p>
+							<p class="content"><c:out value="${list.reply}"/> </p>
 						</li>
 					</c:forEach>
 				</ol>
 				<!-- 댓글 등록폼 -->
-				<form action="" method="post" id="replyForm" class="replyForm">
+				<form method="post" id="replyForm" class="replyForm">
+					<input type="hidden" name="bno" value="${board.bno}">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					<ul>
 						<li>
 							<label>작성자</label>
@@ -114,6 +116,7 @@
 	<jsp:include page="../footer.jsp" />
 <script type="text/javascript">
 	$(document).ready(function(){ //제이쿼리 환경
+		//목록 버튼 이벤트
 		let actionForm = $("#actionForm");
 	
 		$(".listBtn").click(function(e){
@@ -121,6 +124,16 @@
 			actionForm.submit();
 		})
 		
+		//댓글 등록 이벤트 처리
+		let replyForm = $("#replyForm");
+		
+		$(".replyBtn").click(function(e){
+			e.preventDefault(); //기본 동작 제한(링크 등)
+			console.log("click.....");
+			
+			replyForm.attr("action", "/board/reply");
+			replyForm.submit();
+		});
 	});
 </script>
 </body>

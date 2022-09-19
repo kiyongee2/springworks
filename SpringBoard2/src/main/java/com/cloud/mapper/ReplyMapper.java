@@ -8,4 +8,7 @@ public interface ReplyMapper {
 	
 	//´ñ±Û ¸ñ·Ï º¸±â
 	List<ReplyVO> getReplyList(int bno);
+	
+	//´ñ±Û µî·Ï
+	void register(ReplyVO vo);
 }

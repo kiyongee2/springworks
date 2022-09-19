@@ -24,6 +24,9 @@ import com.cloud.domain.ReplyVO;
 import com.cloud.service.BoardService;
 import com.cloud.service.ReplyService;
 
+import lombok.extern.log4j.Log4j;
+
+@Log4j
 @RequestMapping("/board/*")  //localhost:8080/board/aaa
 @Controller
 public class BoardController {
@@ -104,6 +107,17 @@ public class BoardController {
 		rttr.addAttribute("type", cri.getType());
 		rttr.addAttribute("keyword", cri.getKeyword());
 		return "redirect:/board/boardList";
+	}
+	
+	//댓글 등록
+	@PostMapping("/reply")
+	public String reply(ReplyVO vo, RedirectAttributes rttr) {
+		log.info("댓글 작성");
+		
+		replyService.register(vo);  //등록 처리 서비스
+		
+		rttr.addAttribute("bno", vo.getBno());
+		return "redirect:/board/boardView";
 	}
 	
 }
