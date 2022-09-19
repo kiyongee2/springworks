@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +16,7 @@
 <body>
 	<jsp:include page="../menu.jsp" />
 	<div id="container">
-		<section id="list">
+		<section id="view">
 			<div class="title">
 				<h2>글 상세 보기</h2>
 			</div>
@@ -70,6 +72,35 @@
 					</tr>
 				</table>
 			</form>
+			<!-- 댓글 영역 -->
+			<div class="comment">
+				<h4>댓글</h4>
+				<ol class="replyList">
+					<c:forEach items="${replyList}" var="list">
+						<li>
+							<p>작성자: <c:out value="${list.replyer}" />&nbsp;&nbsp;
+							   (작성일: <fmt:formatDate value="${list.replyDate}" 
+							   				pattern="yyyy-MM-dd hh:mm:ss" /> )
+							</p>
+							<p><c:out value="${list.reply}"/> </p>
+						</li>
+					</c:forEach>
+				</ol>
+				<!-- 댓글 등록폼 -->
+				<form action="" method="post" id="replyForm" class="replyForm">
+					<ul>
+						<li>
+							<label>작성자</label>
+							<input type="text" name="replyer" id="replyer"
+							       value="<security:authentication property="principal.username"/>">   
+						</li>
+						<li>
+							<textarea rows="4" cols="60" name="reply" id="reply"></textarea>
+							<button type="button" class="replyBtn">댓글 등록</button>
+						</li>
+					</ul>
+				</form>
+			</div>
 		</section>
 		<!-- 페이지 처리 전송 폼 -->
 		<form action="/board/boardList" method="get" id="actionForm">
@@ -80,6 +111,7 @@
 			<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 		</form>
 	</div>
+	<jsp:include page="../footer.jsp" />
 <script type="text/javascript">
 	$(document).ready(function(){ //제이쿼리 환경
 		let actionForm = $("#actionForm");
