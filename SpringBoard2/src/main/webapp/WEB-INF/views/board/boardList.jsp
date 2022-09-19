@@ -43,14 +43,21 @@
 				<tr>
 					<td><c:out value="${board.bno}" /></td>
 					<td><a href='<c:out value="${board.bno}" />' class="move">
-						<c:out value="${board.title}" />
-						<!-- 댓글 개수 -->
-						[<c:out value="${board.replyCnt}" />]
+							<c:out value="${board.title}" />
 						</a>
+						<!-- 댓글 개수 -->
+						<c:if test="${board.replyCnt >= 1}">
+						<span class="cnt">[<c:out value="${board.replyCnt}" />]</span>
+						</c:if>
 					</td>
 					<td><c:out value="${board.writer}" /></td>
-					<td><fmt:formatDate value="${board.regDate}" 
-					        pattern="yyyy-MM-dd hh:mm:ss" /></td>
+					<td>
+						<!-- 날짜 수정(업데이트) -->
+						<%-- <fmt:formatDate value="${board.regDate}" 
+						        pattern="yyyy-MM-dd hh:mm:ss" /> --%>
+						<fmt:formatDate value="${board.updateDate}" 
+						        pattern="yyyy-MM-dd hh:mm:ss" />
+					</td>
 					<td><c:out value="${board.cnt}" /></td>
 				</tr>
 				</c:forEach>
