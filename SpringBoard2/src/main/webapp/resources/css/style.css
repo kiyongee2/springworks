@@ -18,6 +18,7 @@ nav ul li:hover{background: #eee;}
     margin-bottom: 20px;}
 .msg{height: 80px; background: pink; line-height: 80px; color: brown;}
 .exception{background: pink; padding: 50px;}
+#main img{border-radius: 5px;}
 footer{margin: 10% 20%;}
 
 /* boardList 스타일 */
@@ -58,7 +59,7 @@ footer{margin: 10% 20%;}
 	text-align: left; border-top: 2px dashed #aaa;}
 .comment .replyList p{padding-left: 10px; margin: 10px;}
 .comment .replyList p.replyer{border-top: 1px dotted #aaa; padding: 10px;}
-.comment .replyUpdateBtn, .replyDeleteBtn{font-size: 0.8em;}
+.comment .replyUpdateBtn, .comment .replyDeleteBtn{font-size: 0.8em;}
 .comment .replyForm{width: 580px; margin: 20px auto; text-align: left;}
 .comment .replyForm input{height: 25px;}
 .comment ul li{display: block; margin: 10px;}	
