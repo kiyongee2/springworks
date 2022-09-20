@@ -56,7 +56,7 @@
 						<%-- <fmt:formatDate value="${board.regDate}" 
 						        pattern="yyyy-MM-dd hh:mm:ss" /> --%>
 						<fmt:formatDate value="${board.updateDate}" 
-						        pattern="yyyy-MM-dd hh:mm:ss" />
+						        pattern="yyyy-MM-dd HH:mm:ss" />
 					</td>
 					<td><c:out value="${board.cnt}" /></td>
 				</tr>
